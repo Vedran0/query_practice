@@ -1,0 +1,26 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: local_query_practice
+  host: localhost
+  pool: 5
+  username: myapp
+  password: password1
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: local_test_query_practice
+  host: localhost
+  pool: 5
+  username: myapp
+  password: password1
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: query_practice
+  host: localhost
+  pool: 5
+  username: rails
+  password: secret
