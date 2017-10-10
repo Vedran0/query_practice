@@ -11,7 +11,7 @@
 end
 puts "Professions created"
 150.times do
-  User.create(name: Faker::Name.name, email: Faker::Internet.email, dob: rand(1950..2000), profession_id: rand(25)+1)
+  User.create(name: Faker::Name.name, email: Faker::Internet.email, dob: Faker::Date.between(60.years.ago, 15.years.ago), profession_id: rand(25)+1)
 end
 puts "Users created"
 5.times do
