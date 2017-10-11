@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @person.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @person.email %>
+</p>
+
+<p>
+  <strong>Profession:</strong>
+  <%= @person.profession_id %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @person.dob %>
+</p>
+
+<%= link_to 'Edit', edit_person_path(@person), class: "btn btn-warning" %>
+<%= link_to 'Back', people_path, class: "btn btn-default" %>

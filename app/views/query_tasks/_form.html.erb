@@ -1,0 +1,49 @@
+<%= form_for(@query_task) do |f| %>
+  <% if @query_task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@query_task.errors.count, "error") %> prohibited this query_task from being saved:</h2>
+
+      <ul>
+      <% @query_task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :singularize %><br>
+    <%= f.check_box :singularize, class: "js_singularizer", onchange: "populate_select();" %>
+  </div>
+  <div class="field">
+    <%= f.label :resource %><br>
+    <!-- <select name="query_task[resource]" id="query_task_resource"><%#= @models_pluralized.join().html_safe %></select> -->
+    <%= f.select :resource, options_for_select(@models, f.object.resource) %>
+  </div>
+  <div class="field">
+    <%= f.label :solution_template %><br>
+    <%= f.text_area :solution_template %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Task", class: "btn btn-success" %>
+  </div>
+<% end %>
+<script>
+function populate_select(){
+  var checked = $("#query_task_singularize").is(':checked');
+  if(checked){
+    $("#query_task_resource").empty().append("<%= @models_singularized.join().html_safe %>");
+  }
+  else{
+    $("#query_task_resource").empty().append("<%= @models_pluralized.join().html_safe %>");
+  }
+};
+</script>

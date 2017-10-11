@@ -1,0 +1,25 @@
+<%#= render @query_task %>
+<%= form_for(@solution) do |f| %>
+  <% if @solution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@solution.errors.count, "error") %> prohibited this solution from being saved:</h2>
+
+      <ul>
+      <% @solution.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_area :code %>
+  </div>
+
+  <%= f.hidden_field :query_task_id, value: f.object.query_task_id || @query_task.id %>
+
+  <div class="actions">
+    <%= f.submit "Submit", class: "btn btn-success" %>
+  </div>
+<% end %>

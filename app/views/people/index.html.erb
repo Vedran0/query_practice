@@ -1,0 +1,31 @@
+<%= link_to 'New person', new_person_path, class: "btn btn-primary" %>
+
+<h1>Listing people</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Dob</th>
+      <th>Profession</th>
+      <th colspan="36"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= person.name %></td>
+        <td><%= person.email %></td>
+        <td><%= person.dob.strftime("%d.%m.%Y.") %></td>
+        <td><%= person.profession_name %></td>
+        <td><%= link_to 'Show', person, class: "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_person_path(person), class: "btn btn-warning btn-xs" %></td>
+        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
