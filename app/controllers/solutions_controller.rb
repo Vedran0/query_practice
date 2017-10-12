@@ -4,10 +4,15 @@ class SolutionsController < ApplicationController
   before_action :check_if_owner, only: [:edit, :destroy]
 
   def new
-    @solution = @query_task.solutions.new
+    if @query_task.solved_by(current_user)
+      @solution = Solution.find_by(user_id: current_user.id, query_task_id: @query_task.id)
+    else
+      @solution = @query_task.solutions.new
+    end
   end
 
   def edit
+    @query_task = @solution.query_task
   end
 
   def create
@@ -31,18 +36,18 @@ class SolutionsController < ApplicationController
     end
   end
 
-  def destroy
-    @solution.destroy
-    respond_to do |format|
-      format.html { redirect_to query_task_path(@solution.query_task), notice: 'Solution was successfully destroyed.' }
-    end
-  end
+  # def destroy
+  #   @solution.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to query_task_path(@solution.query_task), notice: 'Solution was successfully destroyed.' }
+  #   end
+  # end
 
   def run_solution
   begin
     eval("@objects=#{@solution.code}")
   rescue
-    @bad_query = "Nešto nije u redu :("
+    @bad_query = "Something is wrong :("
   end
     respond_to do |format|
       format.js

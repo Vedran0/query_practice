@@ -1,1 +1,5 @@
-$(".solution-<%= @solution.id %>").html('<%= j render "solutions/result", objects: @objects %>');
+<% unless @bad_query %>
+  $(".solution-<%= @solution.id %>").html('<%= j render "solutions/result", objects: @objects %>');
+<% else %>
+  $(".solution-<%= @solution.id %>").html('<div class="alert alert-danger"><%= @bad_query %></div>');
+<% end %>

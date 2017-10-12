@@ -1,31 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @query_task.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @query_task.description %>
-</p>
-
-<p>
-  <strong>Resource:</strong>
-  <%= @query_task.resource %>
-</p>
-
-<p>
-  <strong>Solution Template</strong>
-  <pre><%= @query_task.solution_template %></pre>
-</p>
-
-
-<p>
-  <strong>User:</strong>
-  <%= @query_task.user.email %>
-</p>
-
+<%= render @query_task %>
 <%= link_to 'Edit', edit_query_task_path(@query_task), class: "btn btn-warning" %>
 <%= link_to 'Back', query_tasks_path, class: "btn btn-default" %>
 <%= link_to 'Solve', new_solution_path(query_task_id: @query_task.id), class: "btn btn-primary" %>
@@ -42,8 +15,16 @@
     <div class="btn btn-default" onclick="$('.solution-<%= solution.id %>').empty();">cls</div>
     <% if solution.user == current_user %>
       <%= link_to "Edit", edit_solution_path(solution), class: "btn btn-warning btn-sm" %>
-      <%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+      <%#= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
     <% end %>
     <div class="solution-<%= solution.id %>"></div>
   <% end %>
 </div>
+
+<h2>Comments</h2>
+<div class="jq_comments">
+  <% @query_task.comments.each do |comment| %>
+    <%= render 'comments/comment', comment: comment %>
+  <% end %>
+</div>
+  <%= render 'comments/form' %>

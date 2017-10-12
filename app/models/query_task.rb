@@ -19,6 +19,7 @@ class QueryTask < ActiveRecord::Base
 
   belongs_to :user
   has_many :solutions
+  has_many :comments
 
   def solved_by(user)
     solutions.map(&:user_id).include?(user.id) ? true : false

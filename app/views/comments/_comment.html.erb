@@ -1,0 +1,9 @@
+<div class="panel panel-default comment-<%= comment.id %>">
+  <div class="panel-heading">
+    <%= comment.user.email %>
+    <%= link_to 'Destroy', comment, method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs", style: "float: right;" if comment.user == current_user %>
+  </div>
+  <div class="panel-body">
+    <%= comment.text.html_safe %>
+  </div>
+</div>

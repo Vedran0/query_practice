@@ -19,8 +19,10 @@
 #
 
 class User < ActiveRecord::Base
+
   devise :database_authenticatable, :rememberable, :trackable, :validatable
   has_many :query_tasks
   has_many :solutions
+  has_many :comments
 
 end

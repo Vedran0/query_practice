@@ -1,0 +1,9 @@
+<%= form_for Comment.new, class: "form-horizontal", remote: true do |f| %>
+  <%= f.hidden_field :query_task_id, value: @query_task.id %>
+
+  <div class="field">
+    <%= f.label :text, "Write a comment" %>
+    <%= f.text_area :text, class: "form-control" %>
+    <%= f.submit "Comment", style: "margin: 5px;", class: "btn btn-primary btn-xs" %>
+  </div>
+<% end %>

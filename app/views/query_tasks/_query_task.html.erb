@@ -1,0 +1,25 @@
+<p>
+  <strong>Name:</strong>
+  <%= @query_task.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @query_task.description %>
+</p>
+
+<p>
+  <strong>Resource:</strong>
+  <%= @query_task.resource %>
+</p>
+
+<p>
+  <strong>Written by:</strong>
+  <%= @query_task.user.email %>
+</p>
+
+<p>
+  <strong>Solution Columns</strong>
+  <pre><%= @query_task.solution_template %></pre>
+</p>
+
