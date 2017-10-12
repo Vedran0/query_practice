@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :query_tasks
-  resource :users
+  resources :users
   resources :people
   resources :solutions
   resources :comments

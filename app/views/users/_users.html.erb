@@ -1,0 +1,23 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Tasks written</th>
+      <th>Tasks solved</th>
+      <th>Comments</th>
+      <th colspan="1">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.query_tasks.size %></td>
+        <td><div class="btn btn-primary btn-xs"><%= user.solutions.size %></td>
+        <td><div class="btn btn-default btn-xs"><%= user.comments.size %></td>
+        <td><%= link_to 'Show', user, class: "btn btn-default btn-xs" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,6 @@
+<h1><%= @user.email %></h1>
+
+<h2>Solved tasks</h2>
+  <%= render 'query_tasks/query_tasks', query_tasks: @user.solved_tasks %>
+<h2>Written tasks</h2>
+  <%= render 'query_tasks/query_tasks', query_tasks: @user.query_tasks %>

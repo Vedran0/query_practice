@@ -1,0 +1,27 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Written by</th>
+      <th style="text-align: center;">Solutions</th>
+      <th style="text-align: center;">Comments</th>
+      <th colspan="3" style="text-align:center;">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% query_tasks.each do |query_task| %>
+      <tr style="<%= query_task.solved_by(current_user) ? 'background-color: rgba(0,255,30,0.1)' : '' %>">
+        <td><%= query_task.name %></td>
+        <td><%= query_task.description.truncate(50) %></td>
+        <td><%= query_task.user.email %></td>
+        <td style="text-align: center;"><div class="btn btn-primary btn-xs"><%= query_task.solutions.size %></td>
+        <td style="text-align: center;"><div class="btn btn-default btn-xs"><%= query_task.comments.size %></td>
+        <td><%= link_to 'Show', query_task, class: "btn btn-default btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_query_task_path(query_task), class: "btn btn-warning btn-xs" %></td>
+        <td><%= link_to 'Destroy', query_task, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

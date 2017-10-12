@@ -57,7 +57,7 @@ class QueryTasksController < ApplicationController
     def get_list_of_models
       @models_singularized = []
       @models_pluralized = []
-      @models = (ActiveRecord::Base.connection.tables.map.to_a - ["users", "schema_migrations", "solutions", "query_tasks"])
+      @models = (ActiveRecord::Base.connection.tables.map.to_a - ["users", "schema_migrations", "solutions", "query_tasks", "comments"])
       @models.each do |model|
         @models_singularized << "<option>"+model.singularize+"</option>"
         @models_pluralized << "<option>"+model+"</option>"

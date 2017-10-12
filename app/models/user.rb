@@ -22,7 +22,15 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :rememberable, :trackable, :validatable
   has_many :query_tasks
-  has_many :solutions
-  has_many :comments
+  has_many :solutions, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+  def solved_tasks
+    tasks = []
+    solutions.each do |solution|
+      tasks << solution.query_task
+    end
+    QueryTask.find(tasks)
+  end
 
 end
