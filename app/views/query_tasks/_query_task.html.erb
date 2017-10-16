@@ -10,7 +10,7 @@
 
 <p>
   <strong>Resource:</strong>
-  <%= @query_task.resource %>
+  <%= link_to @query_task.resource, resource_path(resource: @query_task.resource), class: "link" %>
 </p>
 
 <p>

@@ -1,4 +1,4 @@
 <h1>Models for practice</h1>
   <% @models.each do |m| %>
-    <p><%= m %></p>
+    <p><%= link_to m, resource_path(resource: m), class: "link" %></p>
   <% end %>

@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :comments
   get "run_solution", to: "solutions#run_solution"
   root "pages#home"
+  get "resource", to: "pages#resource"
 
 end

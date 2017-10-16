@@ -46,6 +46,7 @@ class SolutionsController < ApplicationController
   def run_solution
   begin
     eval("@objects=#{@solution.code}")
+    @time = measure_time_for_solution
   rescue
     @bad_query = "Something is wrong :("
   end
@@ -55,6 +56,15 @@ class SolutionsController < ApplicationController
   end
 
   private
+
+    def measure_time_for_solution
+      time = []
+      500.times do
+        time << eval("Benchmark.measure{#{@solution.code}}.real")
+      end
+      time = time.drop(1).sort.slice(1..-2)
+      time.inject{ |sum, el| sum + el }.to_f / time.size
+    end
 
     def set_solution
       @solution = Solution.find(params[:id])

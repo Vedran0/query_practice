@@ -16,7 +16,7 @@ class Person < ActiveRecord::Base
   validates_presence_of :name, :email, :dob, :profession_id
 
   belongs_to :profession
-  has_many :favorite_desserts
+  has_many :favorite_desserts, dependent: :destroy
   has_many :desserts, through: :favorite_desserts
 
   def profession_name

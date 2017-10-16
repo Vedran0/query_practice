@@ -1,0 +1,4 @@
+<h2><%= params[:resource].camelize.singularize %> model file</h2>
+<pre><%= @model_file.gsub(/\n/, '<br/>').html_safe %></pre>
+<h2><%= params[:resource].camelize.singularize %> table</h2>
+<%= render 'pages/resource_table' %>

@@ -17,6 +17,7 @@
       <%= link_to "Edit", edit_solution_path(solution), class: "btn btn-warning btn-sm" %>
       <%#= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
     <% end %>
+    <div class="solution-time-<%= solution.id %>"></div>
     <div class="solution-<%= solution.id %>"></div>
   <% end %>
 </div>
