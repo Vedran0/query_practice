@@ -8,12 +8,21 @@
   </thead>
 
   <tbody>
-    <% objects.each do |object| %>
+    <% unless @solution.query_task.singularize %>
+      <% objects.each do |object| %>
+        <tr>
+          <% @solution.query_task.solution_template.split().each do |attribute| %>
+            <td><%= eval("object.#{attribute}") %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    <% else %>
       <tr>
         <% @solution.query_task.solution_template.split().each do |attribute| %>
-          <td><%= eval("object.#{attribute}") %></td>
+          <td><%= eval("objects.#{attribute}") %></td>
         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%#= "<h3>No results</h3>".html_safe if objects.empty? %>

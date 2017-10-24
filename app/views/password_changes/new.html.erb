@@ -1,0 +1,31 @@
+<%= form_for @password_change, method: :edit, class: "form-horizontal" do |f| %>
+  <% if @password_change.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@password_change.errors.count, "error") %> prohibited this password from being changed:</h2>
+      <ul>
+      <% @password_change.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :new_password %><br>
+    <%= f.password_field :new_password %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :old_password %><br>
+    <%= f.password_field :old_password %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Change password", class: "btn btn-success" %>
+  </div>
+<% end %>
