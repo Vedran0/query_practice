@@ -2,3 +2,5 @@
   <% @models.each do |m| %>
     <p><%= link_to m, resource_path(resource: m), class: "link" %></p>
   <% end %>
+
+  <h1><%= request.original_fullpath %></h1>
